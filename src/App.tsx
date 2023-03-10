@@ -1,9 +1,9 @@
-
+import './main.css'
 
 function App() {
 
   return (
-    <div className="App">
+    <div className="text-white bg-slate-600">
       <p>hello there!</p>
     </div>
   )
