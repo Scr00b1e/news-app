@@ -1,10 +1,10 @@
-import './main.css'
+
 
 function App() {
 
   return (
     <div className="text-white bg-slate-600">
-      <p>hello there!</p>
+      <p className='text-white text-6xl'>hello there!</p>
     </div>
   )
 }
