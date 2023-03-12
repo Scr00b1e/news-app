@@ -9,7 +9,9 @@ const Routing: React.FC<RoutingType> = ({ text }) => {
     return (
         <div className='w-full my-5'>
             <p>{text}</p>
-            <div className='w-full'>
+            <div className='mt-3 w-full flex justify-between items-center'>
+                <Items />
+                <Items />
                 <Items />
             </div>
         </div>

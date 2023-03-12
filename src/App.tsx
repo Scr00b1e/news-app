@@ -11,8 +11,8 @@ function App() {
       <main className="w-full max-w-4xl my-0 mx-auto">
         <Intro />
         {
-          pages.map((obj) => (
-            <Routing text={obj.text} />
+          pages.map((obj, i) => (
+            <Routing text={obj.text} key={i} />
           ))
         }
       </main>
