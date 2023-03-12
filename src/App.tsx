@@ -1,3 +1,4 @@
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Intro from "./components/Intro";
 import Routing from "./components/Routing";
@@ -16,6 +17,7 @@ function App() {
           ))
         }
       </main>
+      <Footer />
     </div>
   )
 }
