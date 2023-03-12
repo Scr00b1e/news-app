@@ -1,10 +1,14 @@
 import React from 'react'
 import Items from './Items'
 
-const CultureHome = () => {
+type RoutingType = {
+    text: string
+}
+
+const Routing: React.FC<RoutingType> = ({ text }) => {
     return (
         <div className='w-full my-5'>
-            <p>Culture</p>
+            <p>{text}</p>
             <div className='w-full'>
                 <Items />
             </div>
@@ -12,4 +16,4 @@ const CultureHome = () => {
     )
 }
 
-export default CultureHome
+export default Routing

@@ -1,10 +1,7 @@
-import CultureHome from "./components/CultureHome";
-import FutureHome from "./components/FutureHome";
 import Header from "./components/Header";
 import Intro from "./components/Intro";
-import OthersHome from "./components/OthersHome";
-import SportHome from "./components/SportHome";
-import TravelHome from "./components/TravelHome";
+import Routing from "./components/Routing";
+import { pages } from "./data/pages"
 
 function App() {
 
@@ -13,11 +10,11 @@ function App() {
       <Header />
       <main className="w-full max-w-4xl my-0 mx-auto">
         <Intro />
-        <TravelHome />
-        <CultureHome />
-        <SportHome />
-        <FutureHome />
-        <OthersHome />
+        {
+          pages.map((obj) => (
+            <Routing text={obj.text} />
+          ))
+        }
       </main>
     </div>
   )
