@@ -1,8 +1,8 @@
+import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Intro from "./components/Intro";
-import Routing from "./components/Routing";
-import { pages } from "./data/pages"
+import Home from "./pages/Home";
+import Pages from "./pages/Pages";
 
 function App() {
 
@@ -10,12 +10,10 @@ function App() {
     <div className="w-full relative pt-12">
       <Header />
       <main className="w-full max-w-4xl my-0 mx-auto">
-        <Intro />
-        {
-          pages.map((obj, i) => (
-            <Routing text={obj.text} key={i} />
-          ))
-        }
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pages" element={<Pages />} />
+        </Routes>
       </main>
       <Footer />
     </div>
