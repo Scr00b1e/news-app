@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const PagesItem = () => {
     return (
@@ -7,8 +8,10 @@ const PagesItem = () => {
             <p className='text-xl opacity-70 max-w-xl mb-3'>Some stuff Some stuff Some stuff Some stuff Some stuff Some stuff
                 Some stuff Some stuff Some stuff Some stuff
             </p>
-            <button className='px-3 py-1 border-gray-700 border-2 rounded-lg hover:bg-slate-700
+            <Link to={'/newspage'}>
+                <button className='px-3 py-1 border-gray-700 border-2 rounded-lg hover:bg-slate-700
             hover:text-white duration-200'>Read more</button>
+            </Link>
         </div>
     )
 }
