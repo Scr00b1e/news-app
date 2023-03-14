@@ -7,7 +7,9 @@ const Header: React.FC = () => {
             <Link to={'/'}>
                 <p className='text-white text-3xl'>News</p>
             </Link>
-            <button className='py-1 px-3 bg-orange-400 text-slate-50'>Login</button>
+            <Link to={'/login'}>
+                <button className='py-1 px-3 bg-orange-400 text-slate-50'>Login</button>
+            </Link>
         </div>
     )
 }
