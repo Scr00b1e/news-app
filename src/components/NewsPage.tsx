@@ -1,4 +1,5 @@
 import React from 'react'
+import Comments from './Comments'
 
 const NewsPage = () => {
     return (
@@ -11,6 +12,7 @@ const NewsPage = () => {
             <p className='text-xl text-start my-5'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi ducimus sit omnis quisquam minus ullam voluptatum officiis culpa? Laboriosam pariatur ex corporis modi quaerat magni quo dolorum, odio ad praesentium!
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi ducimus sit omnis quisquam minus ullam voluptatum officiis culpa? Laboriosam pariatur ex corporis modi quaerat magni quo dolorum, odio ad praesentium!
             </p>
+            <Comments />
         </div>
     )
 }
