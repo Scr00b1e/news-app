@@ -32,11 +32,15 @@ const Home = () => {
         <>
             <Intro />
             {
-                somePages.map((obj, i) => (
-                    <Link to={`/pages/${i}`}>
-                        <Routing {...obj} key={i} />
-                    </Link>
-                ))
+                loading
+                    ? <div className='w-full my-5 text-center'>
+                        <h1 className='text-xl'>Loading...</h1>
+                    </div>
+                    : somePages.map((obj, i) => (
+                        <Link to={`/pages/${i}`}>
+                            <Routing {...obj} key={i} />
+                        </Link>
+                    ))
             }
         </>
     )
