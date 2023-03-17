@@ -14,7 +14,13 @@ function App() {
       <main className="w-full max-w-4xl my-0 mx-auto flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/pages" element={<Pages />} />
+
+          <Route path="/sport" element={<Pages />} />
+          <Route path="/travel" element={<Pages />} />
+          <Route path="/culture" element={<Pages />} />
+          <Route path="/future" element={<Pages />} />
+          <Route path="/others" element={<Pages />} />
+
           <Route path="/pages/:id" element={<NewsPage />} />
           <Route path="/login" element={<Login />} />
         </Routes>

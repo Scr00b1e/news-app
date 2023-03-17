@@ -1,12 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const PagesItem = () => {
+type PagesItemProps = {
+    title: string
+    description: string
+}
+
+const PagesItem: React.FC<PagesItemProps> = ({ title, description }) => {
     return (
         <div className='w-full my-5 p-5 flex justify-center items-center flex-col bg-slate-200'>
-            <h1 className='text-2xl font-bold mb-3'>Some stuff is going on</h1>
-            <p className='text-xl opacity-70 max-w-xl mb-3'>Some stuff Some stuff Some stuff Some stuff Some stuff Some stuff
-                Some stuff Some stuff Some stuff Some stuff
+            <h1 className='text-2xl font-bold mb-3'>{title}</h1>
+            <p className='text-xl opacity-70 max-w-xl mb-3'>{description}
             </p>
             <Link to={'/pages/0'}>
                 <button className='px-3 py-1 border-gray-700 border-2 rounded-lg hover:bg-slate-700
