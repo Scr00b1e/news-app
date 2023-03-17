@@ -11,7 +11,7 @@ const Home = () => {
     const [loading, setLoading] = React.useState(true)
 
     React.useEffect(() => {
-        const GetPages = async () => {
+        try {
             const q = query(collection(db, 'pages'))
             const unsubscribe = onSnapshot(q, (querySnapshot) => {
                 let pages = []
@@ -22,15 +22,17 @@ const Home = () => {
                 setLoading(false)
             })
             return () => unsubscribe()
+        } catch {
+            alert("Something is wrong...")
         }
-        GetPages()
     }, [])
+    console.log(somePages)
 
     return (
         <>
             <Intro />
             {
-                pages.map((obj, i) => (
+                somePages.map((obj, i) => (
                     <Link to={`/pages/${i}`}>
                         <Routing {...obj} key={i} />
                     </Link>
