@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Intro from '../components/Intro'
 import Routing from '../components/Routing'
 import { query, onSnapshot, collection } from 'firebase/firestore'

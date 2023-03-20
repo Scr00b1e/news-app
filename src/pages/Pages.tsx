@@ -1,5 +1,6 @@
 import { collection, onSnapshot, query } from 'firebase/firestore'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PagesItem from '../components/PagesItem'
 import { db } from '../firebaseconfig'
 
@@ -26,6 +27,9 @@ const Pages = () => {
 
     return (
         <div className='w-full'>
+            <Link to={'/'}>
+                <button className='py-1 px-2 text-sm bg-slate-400 rounded-lg text-start'>Back</button>
+            </Link>
             <h1 className='text-2xl font-bold text-center'>Welcome to Pages!</h1>
             {
                 loading

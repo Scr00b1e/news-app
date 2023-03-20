@@ -5,7 +5,7 @@ import Comments from './Comments'
 const NewsPage = () => {
     return (
         <>
-            <Link to={'/pages'}>
+            <Link to={'/'}>
                 <button className='py-1 px-2 text-sm bg-slate-400 rounded-lg text-start'>Back</button>
             </Link>
             <div className='w-full text-center'>
