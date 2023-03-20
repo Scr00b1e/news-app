@@ -17,7 +17,7 @@ const Routing: React.FC<RoutingType> = ({ text, page }) => {
         try {
             const q = query(collection(db, `${page}`))
             const unsubscribe = onSnapshot(q, (querySnapshot) => {
-                let someItems = []
+                let someItems: any = []
                 querySnapshot.forEach((doc) => {
                     someItems.push({ ...doc.data(), id: doc.id })
                 })
