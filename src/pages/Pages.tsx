@@ -39,7 +39,7 @@ const Pages: React.FC<PagesProps> = ({ page }) => {
                 loading
                     ? <div className='w-full text-center'><h1 className='text-xl'>Loading...</h1></div>
                     : somePages.map((obj, i) => (
-                        <PagesItem {...obj} key={i} />
+                        <PagesItem {...obj} key={i} page={page} i={i} />
                     ))
             }
         </div>
