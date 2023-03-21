@@ -41,7 +41,11 @@ function App() {
             ))
           }
 
-          <Route path="/pages/:id" element={<NewsPage />} />
+          {
+            somePages?.map((obj, i) => (
+              <Route path={`/${obj.page}/:id`} element={<NewsPage key={i} />} />
+            ))
+          }
           <Route path="/login" element={<Login />} />
         </Routes>
       </main>
