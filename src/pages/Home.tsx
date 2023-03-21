@@ -34,7 +34,7 @@ const Home = () => {
                     ? <div className='w-full my-5 text-center'>
                         <h1 className='text-xl'>Loading...</h1>
                     </div>
-                    : somePages.map((obj, i) => (
+                    : somePages.map((obj: any, i) => (
                         <Routing {...obj} key={i} />
                     ))
             }
