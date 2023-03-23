@@ -10,7 +10,6 @@ const Comments = () => {
 
     //add
     const onAdd = async (e: any) => {
-        e.preventDefault()
         if (input === '') {
             alert('You havent wrote anything')
             return

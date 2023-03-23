@@ -1,16 +1,41 @@
+import { onAuthStateChanged, signOut } from 'firebase/auth'
 import React from 'react'
+import { Link } from 'react-router-dom'
+import SignIn from '../components/auth/SignIn'
+import SignUp from '../components/auth/SignUp'
+import { auth } from '../firebaseconfig'
 
 const Login = () => {
+    const [user, setUser] = React.useState({})
+
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser)
+    })
+
+    const onLogout = async () => {
+        await signOut(auth)
+    }
+
+    const Account = () => {
+        return (
+            <>
+                <Link to={'/'}>
+                    <button className='py-1 px-2 text-sm bg-slate-400 rounded-lg'>Back</button>
+                </Link>
+                <h1 className='text-2xl font-bold my-1'>Welcome! {user?.email}</h1>
+                <p className='text-xl text-gray-700 mb-3'>Now you can comment</p>
+                <button className='text-white py-1 px-2 text-sm bg-orange-400 rounded-lg text-center'
+                    onClick={onLogout}>Logout</button>
+            </>
+        )
+    }
+
     return (
-        <div className='w-full h-40 my-48'>
-            <div className='mb-7 py-10 flex items-center justify-center flex-col max-w-xl bg-slate-500 mx-auto'>
-                <h1 className='text-white text-3xl uppercase font-semibold'>Login</h1>
-                <form action="" className='flex flex-col my-3'>
-                    <input type="text" placeholder='E-mail' className='my-1 px-2' />
-                    <input type="password" placeholder='Password' className='my-1 px-2' />
-                    <button className='w-full bg-sky-400 rounded-xl mt-3 py-1 text-slate-50 font-bold'>Done</button>
-                </form>
-            </div>
+        <div className='w-full h-40 my-48 text-center'>
+            {user
+                ? <Account />
+                : <SignIn />
+            }
         </div>
     )
 }
