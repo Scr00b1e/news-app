@@ -1,16 +1,22 @@
+import { onAuthStateChanged } from "firebase/auth";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import NewsPage from "./components/NewsPage";
-import { db } from "./firebaseconfig";
+import { auth, db } from "./firebaseconfig";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Pages from "./pages/Pages";
 
 function App() {
   const [somePages, setSomePages] = useState([])
+  const [user, setUser] = useState({})
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser)
+  })
 
   useEffect(() => {
     try {
@@ -30,13 +36,13 @@ function App() {
 
   return (
     <div className="w-full relative pt-12">
-      <Header />
+      <Header user={user} />
       <main className="w-full max-w-4xl my-0 mx-auto flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
 
           {
-            somePages?.map((obj, id) => (
+            somePages?.map((obj: any, id) => (
               <Route path={`/${obj.page}`} element={<Pages {...obj} key={id} />} />
             ))
           }
@@ -46,7 +52,7 @@ function App() {
               <Route path={`/${obj.page}/:id`} element={<NewsPage key={i} />} />
             ))
           }
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login user={user} />} />
         </Routes>
       </main>
       <Footer />

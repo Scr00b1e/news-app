@@ -5,13 +5,11 @@ import SignIn from '../components/auth/SignIn'
 import SignUp from '../components/auth/SignUp'
 import { auth } from '../firebaseconfig'
 
-const Login = () => {
-    const [user, setUser] = React.useState({})
+type LoginProp = {
+    user: any
+}
 
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser)
-    })
-
+const Login: React.FC<LoginProp> = ({ user }) => {
     const onLogout = async () => {
         await signOut(auth)
     }
