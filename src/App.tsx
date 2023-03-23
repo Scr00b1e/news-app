@@ -2,6 +2,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import SignUp from "./components/auth/SignUp";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import NewsPage from "./components/NewsPage";
@@ -54,6 +55,7 @@ function App() {
             ))
           }
           <Route path="/login" element={<Login user={user} />} />
+          <Route path="/signup" element={<SignUp />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
