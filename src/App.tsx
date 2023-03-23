@@ -8,6 +8,7 @@ import NewsPage from "./components/NewsPage";
 import { auth, db } from "./firebaseconfig";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
 import Pages from "./pages/Pages";
 
 function App() {
@@ -53,6 +54,8 @@ function App() {
             ))
           }
           <Route path="/login" element={<Login user={user} />} />
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
