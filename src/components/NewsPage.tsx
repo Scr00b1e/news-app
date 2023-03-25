@@ -14,7 +14,7 @@ const NewsPage: React.FC<NewsPageProp> = ({ page, i }) => {
 
     React.useEffect(() => {
         const getData = async () => {
-            const docRef = doc(db, `${page}`, `HYHvpJ5If06HJD7Aqa6g`)
+            const docRef = doc(db, `${page}`, `${i}`)
             const docSnap = getDoc(docRef)
 
             if ((await docSnap).exists()) {
