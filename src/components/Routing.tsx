@@ -42,7 +42,7 @@ const Routing: React.FC<RoutingType> = ({ text, page }) => {
                             <h1 className='text-xl'>Loading...</h1>
                         </div>
                         : items.map((obj: any, i) => (
-                            <Link to={`/${page}/${i}`}>
+                            <Link to={`/${page}/${i}`} className='w-full mx-3'>
                                 <Items {...obj} />
                             </Link>
                         ))

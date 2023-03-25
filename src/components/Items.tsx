@@ -7,7 +7,7 @@ type ItemsProps = {
 
 const Items: React.FC<ItemsProps> = ({ title, description }) => {
     return (
-        <div className='w-full mx-3 cursor-pointer'>
+        <div className='cursor-pointer'>
             <img src="https://blog.openreplay.com/images/how-to-build-your-react-app-using-vite/images/hero.png" alt=""
                 className='w-full h-auto' />
             <div className='mt-1'>

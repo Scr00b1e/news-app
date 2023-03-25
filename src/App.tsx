@@ -16,7 +16,7 @@ function App() {
   const [somePages, setSomePages] = useState([])
   const [user, setUser] = useState({})
 
-  onAuthStateChanged(auth, (currentUser) => {
+  onAuthStateChanged(auth, (currentUser: any) => {
     setUser(currentUser)
   })
 
@@ -50,8 +50,8 @@ function App() {
           }
 
           {
-            somePages?.map((obj, i) => (
-              <Route path={`/${obj.page}/:id`} element={<NewsPage key={i} />} />
+            somePages?.map((obj: any, i) => (
+              <Route path={`/${obj.page}/:id`} element={<NewsPage {...obj} key={i} i={i} />} />
             ))
           }
           <Route path="/login" element={<Login user={user} />} />
