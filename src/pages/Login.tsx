@@ -11,6 +11,7 @@ type LoginProp = {
 
 const Login: React.FC<LoginProp> = ({ user }) => {
     const onLogout = async () => {
+        alert('You have been loged out')
         await signOut(auth)
     }
 

@@ -9,7 +9,7 @@ type RoutingsType = {
 const Intro = () => {
     const Routings = ({ img, text }: RoutingsType) => {
         return (
-            <div className='w-full h-20 my-5 bg-center bg-no-repeat bg-cover rounded-lg cursor-pointer'
+            <div className='w-full h-20 my-5 bg-center bg-no-repeat bg-cover rounded-lg'
                 style={img}>
                 <h1 className='mt-4 text-3xl font-bold text-center'>{text}</h1>
             </div>
