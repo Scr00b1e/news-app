@@ -3,7 +3,7 @@ import Routing from '../components/Routing'
 import useFetch from '../hooks/useFetch'
 
 const Home = () => {
-    const { somePages, loading } = useFetch('pages')
+    const { data, loading } = useFetch('pages')
 
     return (
         <>
@@ -13,7 +13,7 @@ const Home = () => {
                     ? <div className='w-full my-5 text-center'>
                         <h1 className='text-xl'>Loading...</h1>
                     </div>
-                    : somePages.map((obj: any, i) => (
+                    : data.map((obj: any, i) => (
                         <Routing {...obj} key={i} />
                     ))
             }

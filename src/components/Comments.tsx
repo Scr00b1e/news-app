@@ -1,12 +1,19 @@
 import { addDoc, collection, onSnapshot, query } from 'firebase/firestore'
 import React from 'react'
-import { db } from '../firebaseconfig'
+import { auth, db } from '../firebaseconfig'
 import CommentsItem from './CommentsItem'
+import { onAuthStateChanged } from 'firebase/auth'
+import { Link } from 'react-router-dom'
+import useFetch from '../hooks/useFetch'
 
 const Comments = () => {
-    const [comments, setComments] = React.useState([])
-    const [loading, setLoading] = React.useState(false)
     const [input, setInput] = React.useState('')
+
+    const [user, setUser] = React.useState({})
+
+    onAuthStateChanged(auth, (currentUser: any) => {
+        setUser(currentUser)
+    })
 
     //add
     const onAdd = async (e: any) => {
@@ -21,22 +28,17 @@ const Comments = () => {
     }
 
     //fetch
-    React.useEffect(() => {
-        try {
-            const q = query(collection(db, 'comments'))
-            const unsubscribe = onSnapshot(q, (querySnapshot) => {
-                let comments: any = []
-                querySnapshot.forEach((doc) => {
-                    comments.push({ ...doc.data(), id: doc.id })
-                })
-                setComments(comments)
-                setLoading(false)
-            })
-            return () => unsubscribe()
-        } catch {
-            alert('Something is wrong')
-        }
-    })
+    const { data, loading } = useFetch('comments')
+
+    if (!user) {
+        return (
+            <div className='w-full flex items-center border-2 border-black p-3 my-3'>
+                <Link to={'/login'}>
+                    <h1 className='font-bold text-xl underline'>Sign up to be able to comment</h1>
+                </Link>
+            </div>
+        )
+    }
 
     return (
         <div className='w-full'>
@@ -50,7 +52,7 @@ const Comments = () => {
                 {
                     loading
                         ? <div className='w-full text-center'><h1 className='text-xl'>Loading...</h1></div>
-                        : comments.map((obj: any, i) => (
+                        : data.map((obj: any, i) => (
                             <CommentsItem {...obj} key={i} />
                         ))
                 }

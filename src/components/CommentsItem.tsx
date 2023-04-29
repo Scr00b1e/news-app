@@ -1,6 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth'
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { auth } from '../firebaseconfig'
 
 type CommentsType = {
@@ -13,16 +12,6 @@ const CommentsItem: React.FC<CommentsType> = ({ text }) => {
     onAuthStateChanged(auth, (currentUser: any) => {
         setUser(currentUser)
     })
-
-    if (!user) {
-        return (
-            <div className='w-full flex items-center border-2 border-black p-3 my-3'>
-                <Link to={'/login'}>
-                    <h1 className='font-bold text-xl underline'>Sign up to be able to comment</h1>
-                </Link>
-            </div>
-        )
-    }
 
     return (
         <div className='w-full flex items-center border-2 border-black p-3 my-3'>

@@ -8,7 +8,7 @@ interface PagesProps {
 }
 
 const Pages: React.FC<PagesProps> = ({ page }) => {
-    const { somePages, loading } = useFetch(`${page}`)
+    const { data, loading } = useFetch(`${page}`)
 
     return (
         <div className='w-full'>
@@ -19,7 +19,7 @@ const Pages: React.FC<PagesProps> = ({ page }) => {
             {
                 loading
                     ? <div className='w-full text-center'><h1 className='text-xl'>Loading...</h1></div>
-                    : somePages.map((obj: any, i) => (
+                    : data.map((obj: any, i) => (
                         <PagesItem {...obj} key={i} page={page} i={i} />
                     ))
             }

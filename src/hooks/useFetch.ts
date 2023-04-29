@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { db } from '../firebaseconfig'
 
 const useFetch = (paging: string) => {
-    const [somePages, setSomePages] = useState([])
+    const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
 
@@ -11,11 +11,11 @@ const useFetch = (paging: string) => {
         try {
             const q = query(collection(db, paging))
             const unsubscribe = onSnapshot(q, (querySnapshot) => {
-                let pages: any = []
+                let datas: any = []
                 querySnapshot.forEach((doc) => {
-                    pages.push({ ...doc.data(), id: doc.id })
+                    datas.push({ ...doc.data(), id: doc.id })
                 })
-                setSomePages(pages)
+                setData(datas)
                 setLoading(false)
             })
             return () => unsubscribe()
@@ -25,7 +25,7 @@ const useFetch = (paging: string) => {
         }
     }, [])
 
-    return { somePages, loading, error }
+    return { data, loading, error }
 }
 
 export default useFetch
