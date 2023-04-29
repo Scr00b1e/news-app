@@ -1,33 +1,14 @@
-import { collection, onSnapshot, query } from 'firebase/firestore'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PagesItem from '../components/PagesItem'
-import { db } from '../firebaseconfig'
+import useFetch from '../hooks/useFetch'
 
 interface PagesProps {
     page: string
 }
 
 const Pages: React.FC<PagesProps> = ({ page }) => {
-    const [somePages, setSomePages] = React.useState([])
-    const [loading, setLoading] = React.useState(true)
-
-    React.useEffect(() => {
-        try {
-            const q = query(collection(db, `${page}`))
-            const unsubscribe = onSnapshot(q, (querySnapshot) => {
-                let pages: any = []
-                querySnapshot.forEach((doc) => {
-                    pages.push({ ...doc.data(), id: doc.id })
-                })
-                setSomePages(pages)
-                setLoading(false)
-            })
-            return () => unsubscribe()
-        } catch {
-            alert("Something is wrong...")
-        }
-    }, [])
+    const { somePages, loading } = useFetch(`${page}`)
 
     return (
         <div className='w-full'>
